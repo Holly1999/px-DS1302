@@ -1,18 +1,16 @@
 {
     "name": "px-ds1302",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "radio": "*"
     },
     "files": [
         "README.md",
         "main.ts",
         "_locales/zh/DS1302-strings.json"
     ],
-    "testFiles": [],
     "public": true,
     "targetVersions": {
         "target": "6.0.8",
