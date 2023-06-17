@@ -11,12 +11,12 @@ namespace DS1302 {
     let DS1302_REG_CTRL = 0x90
     let DS1302_REG_RAM = 0xC0
 
-    function DecToHex(dat: number): number {
-        return (dat / 10) * 16 + (dat % 10)
+    function HexToDec(dat: number): number {
+        return (dat >> 4) * 10 + (dat % 16);
     }
 
-    function HexToDec(dat: number): number {
-        return (dat / 16) * 10 + (dat % 16);
+    function DecToHex(dat: number): number {
+        return Math.idiv(dat, 10) * 16 + (dat % 10)
     }
 
     export class ClockDS1302 {
