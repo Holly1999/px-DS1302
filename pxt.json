@@ -5,11 +5,19 @@
     "license": "MIT",
     "dependencies": {
         "core": "*",
+        "microphone": "*"
     },
     "files": [
         "README.md",
         "_locales/zh/DS1302-strings.json",
         "main.ts"
     ],
-    "public": true
+    "public": true,
+    "targetVersions": {
+        "target": "6.0.8",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ]
 }
