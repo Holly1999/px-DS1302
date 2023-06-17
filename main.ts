@@ -98,7 +98,7 @@ namespace DS1302 {
 
         //% parts="DS1302"
         //% blockId="DS1302_set_minute" weight=76 blockGap=8
-        //% block="%ds|set minute %dat"
+        //% block="%ds|Set minute %dat"
         //% dat.min=0 dat.max=59
         SetMinute(dat: number): void {
             this.wr(DS1302_REG_MINUTE, DecToHex(dat % 60))
@@ -106,7 +106,7 @@ namespace DS1302 {
 
         //% parts="DS1302"
         //% blockId="SetSecond" weight=75 blockGap=8
-        //% block="%ds|set second %dat"
+        //% block="%ds|Set second %dat"
         //% dat.min=0 dat.max=59
         SetSecond(dat: number): void {
             this.wr(DS1302_REG_SECOND, DecToHex(dat % 60))
@@ -114,7 +114,7 @@ namespace DS1302 {
 
         //% parts="DS1302"
         //% blockId="SetWeekday" weight=74 blockGap=8
-        //% block="%ds|set weekday %dat"
+        //% block="%ds|Set weekday %dat"
         //% dat.min=1 dat.max=7
         SetWeekday(dat: number): void {
             this.wr(DS1302_REG_WEEKDAY, DecToHex(dat % 8))
@@ -157,7 +157,7 @@ namespace DS1302 {
 
         //% parts="DS1302"
         //% blockId="GetSecond" weight=55 blockGap=8
-        //% block="%ds|get second"
+        //% block="%ds|Get second"
         GetSecond(): number {
             return HexToDec(this.GetReg(DS1302_REG_SECOND + 1)) % 60
         }
@@ -178,9 +178,9 @@ namespace DS1302 {
         }
 
         //% parts="DS1302"
-        //% blockId="stop" weight=52 blockGap=8
-        //% block="%ds|Clock stop"
-        stop() {
+        //% blockId="pause" weight=52 blockGap=8
+        //% block="%ds|Clock pause"
+        pause() {
             let t = this.GetSecond()
             this.SetSecond(t | 0x80)
         }
@@ -199,6 +199,26 @@ namespace DS1302 {
         //% reg.min=0 reg.max=30
         WriteRam(reg: number, dat: number) {
             this.wr(DS1302_REG_RAM + (reg % 31) * 2, dat)
+        }
+
+        //% parts="DS1302"
+        //% blockId="DateTime" weight=30 blockGap=8
+        //% block="%ds|set Date and Time: Year %year|Month %month|Day %day|WeekDay %weekday|Hour %hour|Minute %minute|Second %second"        
+        //% year.min=2000 year.max=2100
+        //% month.min=1 month.max=12
+        //% day.min=1 day.max=31
+        //% weekday.min=1 weekday.max=7
+        //% hour.min=0 hour.max=23
+        //% minute.min=0 minute.max=59
+        //% second.min=0 second.max=59
+        DateTime(year: number, month: number, day: number, weekday: number, hour: number, minute: number, second: number): void {
+            this.SetYear(year);
+            this.SetMonth(month);
+            this.SetDay(day);
+            this.SetWeekday(weekday);
+            this.SetHour(hour);
+            this.SetMinute(minute);
+            this.SetSecond(second);
         }
     }
 
