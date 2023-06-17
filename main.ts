@@ -26,18 +26,18 @@ namespace DS1302 {
 
         WriteByte(dat: number) {
             for (let i = 0; i < 8; i++) {
+                pins.digitalWritePin(this.clk, 0);
                 pins.digitalWritePin(this.dio, (dat >> i) & 1);
                 pins.digitalWritePin(this.clk, 1);
-                pins.digitalWritePin(this.clk, 0);
             }
         }
 
         ReadByte(): number {
             let rData = 0;
             for (let i = 0; i < 8; i++) {
+                pins.digitalWritePin(this.clk, 0);
                 rData = rData | (pins.digitalReadPin(this.dio) << i);
                 pins.digitalWritePin(this.clk, 1);
-                pins.digitalWritePin(this.clk, 0);
             }
             return rData;
         }
