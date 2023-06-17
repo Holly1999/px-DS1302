@@ -1,15 +1,15 @@
 {
-    "name": "px-ds1302",
+    "name": "DS1302",
     "version": "1.0.0",
-    "description": "",
+    "description": "DS1302 RTC Package for micro:bit",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "microphone": "*"
     },
     "files": [
         "README.md",
-        "main.ts",
-        "_locales/zh/DS1302-strings.json"
+        "_locales/zh/DS1302-strings.json",
+        "main.ts"
     ],
     "public": true,
     "targetVersions": {
@@ -18,6 +18,5 @@
     },
     "supportedTargets": [
         "microbit"
-    ],
-    "preferredEditor": "tsprj"
+    ]
 }
