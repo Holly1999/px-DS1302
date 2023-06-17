@@ -2,6 +2,7 @@
     "name": "DS1302",
     "version": "1.0.0",
     "description": "DS1302 RTC Package for micro:bit",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
         "microphone": "*"
